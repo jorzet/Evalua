@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Evalua</string>
+
+    <string name="version_app">1.0</string>
+
+    <string name="send_button_text">ENVIAR</string>
+
+
+    <!--choose action fragment-->
+    <string name="choose_action_text">Selecciona la acción</string>
+    <string name="check_list_text">checkList</string>
+    <string name="slopes_text">Pendientes</string>
+    <string name="cels_deliver_text">Entrega Cels</string>
+
+    <!--promotor evaluation fragment-->
+    <string name="seller_key_text">Clave del Vendedor</string>
+    <string name="module_key_text">Clave del Modulo</string>
+    <string name="what_promotor_did_text">¿QUE ESTABA HACIENDO EL PROMOTOR?</string>
+    <string name="order_text">¿VITRINA ORDENADA Y SIN HUECOS, CON PRECIO Y FICHAS TECNICAS EN TODOS LOS EQUIPOS?</string>
+    <string name="arts_expose_text">¿ARTES ORGANIZADOS Y EXHIBIDOS?</string>
+    <string name="offers_clearly_text">¿OFERTAS CLARAMENTE SEÑALIZADAS?</string>
+    <string name="sell_register_and_particitaption_text">¿REGISTRO DE VENTAS Y PARTICIPACIÓN?</string>
+    <string name="know_current_promotions_text">¿CONOCE PROMOCIÓN, PROMOCIONES VIGENTES?</string>
+    <string name="uniform_code_text">¿UNIFORME Y CODIGO DE VESTIMENTA?</string>
+
+    <!--slopes fragment-->
+    <string name="module_key_text_2">Clave del Modulo</string>
+    <string name="observations_text">Observaciones</string>
+
+    <!--mcia deliver fragment-->
+    <string name="string_text">Cadena</string>
+    <string name="facture_text">Factura</string>
+    <string name="folio_text">Folio Recibo</string>
+
+</resources>

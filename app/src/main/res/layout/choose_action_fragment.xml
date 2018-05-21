@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+
+    <ImageView
+        android:id="@+id/main_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/circle_blue_icon"/>
+
+    <TextView
+        android:id="@+id/evalua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_icon"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Evalua"
+        android:textColor="#4476B6"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/select_one_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/evalua"
+        android:layout_marginTop="50dp"
+        android:text="@string/choose_action_text"
+        android:textSize="25sp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_buttons_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_one_option"
+        android:layout_marginTop="30dp"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/btn_check_list"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/check_list_text"/>
+
+        <Button
+            android:id="@+id/btn_slopes"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_check_list"
+            android:layout_marginTop="20dp"
+            android:text="@string/slopes_text"/>
+
+        <Button
+            android:id="@+id/btn_cels_delivery"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_slopes"
+            android:layout_marginTop="20dp"
+            android:text="@string/cels_deliver_text"/>
+
+    </RelativeLayout>
+
+
+    
+</RelativeLayout>

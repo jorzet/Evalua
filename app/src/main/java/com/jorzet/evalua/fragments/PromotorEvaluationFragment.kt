@@ -18,9 +18,11 @@ package com.jorzet.evalua.fragments
 
 import android.Manifest
 import android.app.Activity
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -130,16 +132,26 @@ class PromotorEvaluationFragment : Fragment() {
      * This method sends a message through sms
      */
     private fun sendMesage(message : String) {
-        ActivityCompat.requestPermissions(activity as Activity, arrayOf( Manifest.permission.SEND_SMS),1);
-        MessageSender.getInstance().sendTextMessage(
-                MessageSender.TELEPHONE_NUMBER,
-                null,
-                message,
-                null,
-                null)
-        activity!!.finish()
+
+        if (isSmsPermissionGranted()) {
+            MessageSender.getInstance().sendTextMessage(
+                    MessageSender.TELEPHONE_NUMBER,
+                    null,
+                    message,
+                    null,
+                    null)
+            activity!!.finish()
+        } else {
+            Toast.makeText(context!!,"No tiene permisos para enviar mensages SMS", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    /*
+     * Check if we have SMS permission
+     */
+    fun isSmsPermissionGranted(): Boolean {
+        return ContextCompat.checkSelfPermission(activity!!, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED
+    }
 
     /*
     * Listeners

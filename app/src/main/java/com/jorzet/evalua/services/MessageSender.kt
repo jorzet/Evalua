@@ -26,7 +26,8 @@ import android.telephony.gsm.SmsManager
 class MessageSender {
 
     companion object {
-        val TELEPHONE_NUMBER : String = "5559810374"
+        // 6255891069
+        val TELEPHONE_NUMBER : String = "6255891069"
         private var instance : SmsManager? = null
 
         fun  getInstance(): SmsManager {

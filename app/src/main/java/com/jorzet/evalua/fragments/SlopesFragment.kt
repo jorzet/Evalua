@@ -18,15 +18,23 @@ package com.jorzet.evalua.fragments
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.jorzet.evalua.R
 import com.jorzet.evalua.services.MessageSender
+import android.content.pm.PackageManager
+import android.support.v4.content.ContextCompat
+
+
 
 /**
  * Created by Jorge Zepeda Tinoco on 19/05/18.
@@ -54,10 +62,32 @@ class SlopesFragment : Fragment() {
         mModuleEditTextView = rootView.findViewById(R.id.et_module_key)
         mObservationsEditText = rootView.findViewById(R.id.et_observations)
 
-        mBackButton.setOnClickListener(mBackButtonListener)
-        mSendButton.setOnClickListener(mSendButtonListener)
+        initView()
 
         return rootView
+    }
+
+    /*
+     * Create the view initialization
+     */
+    private fun initView() {
+        mBackButton.setOnClickListener(mBackButtonListener)
+        mSendButton.setOnClickListener(mSendButtonListener)
+        mObservationsEditText.setOnEditorActionListener(onSendFormListener)
+    }
+
+    /*
+     * This method check if the editText has info, and call prepareMessage
+     */
+    private fun send() {
+        val module = mModuleEditTextView.text.toString()
+        val observations = mObservationsEditText.text.toString()
+
+        if (!module.equals("") && !observations.equals("")) {
+            prepareMessage(mModuleEditTextView.text.toString(), mObservationsEditText.text.toString())
+        } else {
+            Toast.makeText(context!!,"Ingrese todos los campos", Toast.LENGTH_SHORT).show()
+        }
     }
 
     /*
@@ -72,14 +102,24 @@ class SlopesFragment : Fragment() {
      * This method sends a message through sms
      */
     private fun sendMesage(message : String) {
-        ActivityCompat.requestPermissions(activity as Activity, arrayOf( Manifest.permission.SEND_SMS),1);
-        MessageSender.getInstance().sendTextMessage(
-                MessageSender.TELEPHONE_NUMBER,
-                null,
-                message,
-                null,
-                null)
-        activity!!.finish()
+        if (isSmsPermissionGranted()) {
+            MessageSender.getInstance().sendTextMessage(
+                    MessageSender.TELEPHONE_NUMBER,
+                    null,
+                    message,
+                    null,
+                    null)
+            activity!!.finish()
+        } else {
+            Toast.makeText(context!!,"No tiene permisos para enviar mensages SMS", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /*
+     * Check if we have SMS permission
+     */
+    fun isSmsPermissionGranted(): Boolean {
+        return ContextCompat.checkSelfPermission(activity!!, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED
     }
 
     /*
@@ -90,13 +130,20 @@ class SlopesFragment : Fragment() {
     }
 
     private val mSendButtonListener = View.OnClickListener {
-        val module = mModuleEditTextView.text.toString()
-        val observations = mObservationsEditText.text.toString()
+        send()
+    }
 
-        if (!module.equals("") && !observations.equals("")) {
-            prepareMessage(mModuleEditTextView.text.toString(), mObservationsEditText.text.toString())
-        } else {
-            Toast.makeText(context!!,"Ingrese todos los campos", Toast.LENGTH_SHORT).show();
+    private val onSendFormListener = object : TextView.OnEditorActionListener {
+        override fun onEditorAction(textView: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+            var action = false
+            if (actionId === EditorInfo.IME_ACTION_SEND) {
+                // hide keyboard
+                val inputMethodManager = textView!!.getContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(textView.getWindowToken(), 0)
+                send()
+                action = true
+            }
+            return action
         }
     }
 }

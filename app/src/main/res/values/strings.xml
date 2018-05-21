@@ -31,5 +31,7 @@
     <string name="string_text">Cadena</string>
     <string name="facture_text">Factura</string>
     <string name="folio_text">Folio Recibo</string>
+    <string name="date">Seleccione la fecha</string>
+    <string name="hour_and_minutes">Seleccione la hora y minutos</string>
 
 </resources>

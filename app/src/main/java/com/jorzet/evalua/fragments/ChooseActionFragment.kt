@@ -16,7 +16,10 @@
 
 package com.jorzet.evalua.fragments
 
+import android.Manifest
+import android.app.Activity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -49,13 +52,23 @@ class ChooseActionFragment : Fragment() {
         mSlopesButton = rootView.findViewById(R.id.btn_slopes)
         mCelsDeliverButton = rootView.findViewById(R.id.btn_cels_delivery)
 
-        mCheckListButton.setOnClickListener(mCheckListButtonListener)
-        mSlopesButton.setOnClickListener(mSlopesButtonListener)
-        mCelsDeliverButton.setOnClickListener(mCelsDeliverButtonListener)
+        initView()
 
         return rootView
     }
 
+    private fun initView() {
+        mCheckListButton.setOnClickListener(mCheckListButtonListener)
+        mSlopesButton.setOnClickListener(mSlopesButtonListener)
+        mCelsDeliverButton.setOnClickListener(mCelsDeliverButtonListener)
+
+        // request SMS permissions
+        ActivityCompat.requestPermissions(activity as Activity, arrayOf( Manifest.permission.SEND_SMS),1);
+    }
+
+    /*
+     * Listeners
+     */
     private val mCheckListButtonListener = View.OnClickListener {
         goPromotorEvaluationFragment()
     }
@@ -68,6 +81,9 @@ class ChooseActionFragment : Fragment() {
         goMciaDeliverFragment()
     }
 
+    /*
+     * Methods to change current fragment
+     */
     private fun goPromotorEvaluationFragment() {
         val transaction = fragmentManager!!.beginTransaction();
         transaction.replace(R.id.choose_actions_container, PromotorEvaluationFragment());

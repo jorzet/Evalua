@@ -73,6 +73,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/tv_seller_key_text"
                     android:layout_marginTop="20dp"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:nextFocusForward="@+id/et_module_key"
                     android:gravity="center"/>
 
                 <TextView
@@ -91,6 +94,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/tv_module_key_text"
                     android:layout_marginTop="20dp"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:nextFocusForward="@+id/spn_what_promotor_doing"
                     android:gravity="center"/>
 
                 <TextView

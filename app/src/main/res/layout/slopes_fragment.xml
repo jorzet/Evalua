@@ -65,6 +65,9 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/tv_module_key_text"
             android:layout_marginTop="20dp"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/et_observations"
             android:gravity="center"/>
 
         <TextView
@@ -83,6 +86,8 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/tv_observations_text"
             android:layout_marginTop="20dp"
+            android:imeOptions="actionSend"
+            android:singleLine="true"
             android:gravity="center"/>
 
     </RelativeLayout>

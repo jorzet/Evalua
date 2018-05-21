@@ -41,79 +41,118 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="30dp">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
 
-        <DatePicker
-            android:id="@+id/choose_date_picker"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"/>
-
-        <TextView
-            android:id="@+id/tv_string_text"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/choose_date_picker"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            android:text="@string/string_text"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_centerInParent="true">
 
-        <Spinner
-            android:id="@+id/spn_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/tv_string_text"
-            android:layout_marginTop="20dp"
-            android:gravity="center"/>
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="@string/date"/>
 
-        <TextView
-            android:id="@+id/tv_facture_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/spn_string"
-            android:text="@string/facture_text"/>
+            <DatePicker
+                android:id="@+id/choose_date_picker"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/tv_date"
+                android:layout_centerHorizontal="true"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"/>
 
-        <EditText
-            android:id="@+id/et_facture"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/tv_facture_text"
-            android:layout_marginTop="20dp"
-            android:gravity="center"/>
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/choose_date_picker"
+                android:layout_centerHorizontal="true"
+                android:text="@string/hour_and_minutes"/>
+
+            <TimePicker
+                android:id="@+id/choose_time_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/tv_time"
+                android:timePickerMode="spinner">
+            </TimePicker>
+
+            <TextView
+                android:id="@+id/tv_string_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/choose_time_picker"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/string_text"/>
+
+            <Spinner
+                android:id="@+id/spn_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_string_text"
+                android:layout_marginTop="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_facture_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/spn_string"
+                android:text="@string/facture_text"/>
+
+            <EditText
+                android:id="@+id/et_facture"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_facture_text"
+                android:layout_marginTop="20dp"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:nextFocusForward="@+id/et_folio"
+                android:gravity="center"/>
 
 
-        <TextView
-            android:id="@+id/tv_foli_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/et_facture"
-            android:text="@string/folio_text"/>
+            <TextView
+                android:id="@+id/tv_foli_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/et_facture"
+                android:text="@string/folio_text"/>
 
-        <EditText
-            android:id="@+id/et_folio"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/tv_foli_text"
-            android:layout_marginTop="20dp"
-            android:gravity="center"/>
+            <EditText
+                android:id="@+id/et_folio"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_foli_text"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:imeOptions="actionSend"
+                android:singleLine="true"
+                android:gravity="center"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
